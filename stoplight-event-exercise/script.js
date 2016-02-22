@@ -30,7 +30,7 @@ function stoplightOn(){
 
 function slowlightOn(){
   stopLight.style.backgroundColor = "black";
-  slowLight.style.backgroundColor = "yellow";
+  slowLight.style.backgroundColor = "orange";
   goLight.style.backgroundColor = "black";
 }
 
