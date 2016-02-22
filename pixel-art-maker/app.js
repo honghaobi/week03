@@ -12,13 +12,11 @@ function createCanvas(){
     box.style.backgroundColor = "white";
     body.appendChild(box);
   }
-
 }
 
 createCanvas();
 
-
-function colorPicker(){
+function colorPallet(){
   document.getElementById('0').style.backgroundColor = "red";
   document.getElementById('1').style.backgroundColor = "orange";
   document.getElementById('2').style.backgroundColor = "yellow";
@@ -35,17 +33,34 @@ function colorPicker(){
   }
 }
 
-colorPicker();
+colorPallet();
 
 var selectColor;
+var mouseID = false;
 
-function clickItem(event){
+body.addEventListener("click", function(event){
   if (event.target.className == "colorSelect") {
     selectColor = event.target.style.backgroundColor;
   } else {
     event.target.style.backgroundColor = selectColor;
   }
-}
+});
 
-body.addEventListener("click", clickItem);
-// body.addEventListener("mouseover", clickItem);
+body.addEventListener("mouseover", function(){
+  if (mouseID === true) {
+    event.target.style.backgroundColor = selectColor;
+  }
+});
+
+body.addEventListener("mousedown", function(){
+  mouseID = true;
+});
+
+body.addEventListener("mouseup", function(){
+  mouseID = false;
+});
+
+body.addEventListener("change", function(event){
+  var pickColor = document.getElementById("picker").value;
+  selectColor = pickColor;
+});
