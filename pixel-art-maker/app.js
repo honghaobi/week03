@@ -1,7 +1,7 @@
 var body = document.getElementsByTagName('body')[0];
 var box;
 function createCanvas(){
-  for (var i = 0; i < 2048; i++) {
+  for (var i = 0; i < 2046; i++) {
     box = document.createElement('div');
     box.id = i;
     box.className = "empty";
@@ -63,4 +63,5 @@ body.addEventListener("mouseup", function(){
 body.addEventListener("change", function(event){
   var pickColor = document.getElementById("picker").value;
   selectColor = pickColor;
+
 });
