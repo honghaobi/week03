@@ -48,11 +48,16 @@
       },
       deposit: function(account, amount){
 
+        // guard clause
+        if (account !== "savings" && account !== "checking" ) {
+          return;
+        }
+
         this[account] += amount;
 
         // if (account === "checking") {
         //   this.checking += amount;
-        // } else if(account === "savings") {
+        // } else if (account === "savings") {
         //   this.savings += amount;
         // }
 
@@ -61,13 +66,47 @@
       }
     };
 
-    bank.depositChecking(500);
-    bank.deposit("savings", 900);
+    // bank.depositChecking(500);
+    // bank.deposit("savings", 900);
+
+    // constructor function!!
+
+function Bank(holder, checking, savings, key, value){
+  this.holder = holder;
+  this.checking = checking;
+  this.savings = savings;
+  this[key] = value;
+}
+var steve = new Bank("Steve", 25000, 51000, "credit", 4000);
+
+// console.log(steve);
 
 
+function CarObject(key1, value1, key2, value2){
+  this[key1] = value1;
+  this[key2] = value2;
+}
 
 
+var myCar = new CarObject("make", "honda", "model", "civic");
 
+console.log(myCar);
+
+
+var bla = new Object;
+
+console.log(bla);
+console.log(Object);
+
+var x = new Object(1);
+var y = new Object("word");
+var z = new Object(true);
+var a = new Object([3,2,1]);
+
+console.log(x);
+console.log(y);
+console.log(z);
+console.log(a);
 
     </script>
   </body>
