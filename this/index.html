@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>this</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var henry = {
+      name: "henry",
+      age: 27,
+      height: "5-9",
+      growOlder: function (age){
+        console.log(this.height);
+        console.log(age + 1);
+      },
+      checkThis: function (){
+        console.log(this);
+      }
+    };
+    var vince = {
+      name: "vince",
+      age: 27,
+      height: "5-9",
+      growOlder: function (age){
+        console.log(this.height);
+        console.log(age + 1);
+      },
+      checkThis: function (){
+        console.log(this);
+        henry.checkThis();
+      }
+    };
+
+    // henry.growOlder(28);
+    vince.checkThis();
+
+    </script>
+  </body>
+</html>
