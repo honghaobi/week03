@@ -33,7 +33,41 @@
     };
 
     // henry.growOlder(28);
-    vince.checkThis();
+    // vince.checkThis();
+
+    // Add a method called depositChecking which deposites money into the account
+    // Rename that method to call it deposit which passes in the string "checking" or "savings" which deposites money into the correct one.
+
+    var bank = {
+      holder: "Ryan",
+      checking: 100,
+      savings: 200,
+      depositChecking: function(amount){
+        this.checking += amount;
+        console.log(this.checking);
+      },
+      deposit: function(account, amount){
+
+        this[account] += amount;
+
+        // if (account === "checking") {
+        //   this.checking += amount;
+        // } else if(account === "savings") {
+        //   this.savings += amount;
+        // }
+
+      console.log(this.checking);
+      console.log(this.savings);
+      }
+    };
+
+    bank.depositChecking(500);
+    bank.deposit("savings", 900);
+
+
+
+
+
 
     </script>
   </body>
