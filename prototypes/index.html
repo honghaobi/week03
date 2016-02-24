@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>prototypes</title>
+    <script type="text/javascript">
+
+    function CarObject(key1, value1, key2, value2){
+      this[key1] = value1;
+      this[key2] = value2;
+      this.boom = function() {
+        console.log("Boom");
+      }
+    }
+
+    CarObject.prototype.zoom = function () {
+      console.log("Zoooooommmm!");
+    }
+
+    CarObject.prototype.boom = function () {
+      console.log("Booomm Proto");
+    }
+
+    var myCar = new CarObject("make", "honda", "model", "civic");
+
+    console.log(myCar);
+
+
+    var stopObject = {
+      stop: function() {
+        console.log("Stop!!");
+      }
+    }
+
+
+    var herCar = Object.create(stopObject);
+
+    var hisCar = Object.create(myCar);
+
+
+    console.log(herCar);
+    console.log(hisCar);
+  
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
