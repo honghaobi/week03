@@ -7,15 +7,6 @@
   <body>
     <script type="text/javascript">
 
-      //not the bestway. its not linear/leaves.
-      function fib(n) {
-        if(n === 0 || n === 1) {
-          return n;
-        } else
-        return fib(n - 1) + fib(n - 2);
-      }
-
-      fib(18);
 
       var arr = [];
 
@@ -29,22 +20,19 @@
       }
 
       countDown(20);
-      console.log(arr);
+      console.log("count down array " + arr);
 
 
-      var sum = 0;
 
       function sumOfRange(x) {
         if (x === 0){
-          return sum;
+          return x;
         } else {
-          sum = sum + x;
-          sumOfRange(x - 1);
+          return x + (sumOfRange(x - 1));
         }
       }
 
-      sumOfRange(10);
-      console.log(sum);
+      console.log("sum of range is " + sumOfRange(10));
 
 
       function power(n,x) {
@@ -55,9 +43,30 @@
         }
       }
 
-      console.log(power(3,9));
+      console.log("power is " + power(3,9));
 
-    
+
+      function fib(n) {
+        if(n === 0 || n === 1) {
+          return n;
+        } else
+        return fib(n - 1) + fib(n - 2);
+      }
+
+      console.log("fibonacci number is " + fib(18));
+
+
+      function pali(str) {
+        if (str.length === 0){
+          return true;
+        } else if (str.slice(0,1) !== str.slice(-1)) {
+          return false;
+        } else {
+          return pali(str.slice(1,-1));
+        }
+      }
+
+      console.log(pali("poop"));
 
     </script>
   </body>
