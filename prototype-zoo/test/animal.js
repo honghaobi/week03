@@ -7,7 +7,7 @@ describe('Animal', function(){
   describe('properties', function(){
 
     var animal = new Animal('lion', 'roar', 'Simba', 3);
-    
+
     describe('kind', function(){
       it('should have a kind', function(){
         assert.equal(animal.kind, 'lion');
@@ -35,7 +35,7 @@ describe('Animal', function(){
     describe('awake', function(){
       it('should have a default value for awake', function(){
         assert.equal(animal.awake, false);
-      });   
+      });
     });
 
   }); // properties
@@ -66,35 +66,34 @@ describe('Animal', function(){
       it('should roar if a lion', function(){
         assert.equal(lion.speak(), 'roar');
       });
-      
+
       it('should oink if a pig', function(){
         assert.equal(pig.speak(), 'oink');
       });
     });
-    
+
     describe('#feed()', function(){
       it('should return "NOM NOM NOM" if awake', function(){
         pig.wakeUp();
         var lionFed = lion.feed();
         var pigFed = pig.feed();
-        
+
         assert.equal(lionFed, undefined);
         assert.equal(pigFed, 'NOM NOM NOM');
       });
     });
 
     describe('#growUp()', function(){
-      xit('should increment age by one', function(){
-        // write an assertion for what's
-        // being described on line 87
+      it('should increment age by one', function(){
+        assert.equal(lion.growUp(), 4);
       });
     });
 
-    xdescribe('#sleep()', function(){
-      // write the `it`block and assertion
-      // that changes `awake` to `false`. 
+    describe('#sleep()', function(){
+      it('should return false', function(){
+        lion.sleep();
+        assert.equal(lion.awake, false);
     });
-
   }); // methods
-
+  });
 });
