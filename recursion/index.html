@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>recursion</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      //not the bestway. its not linear/leaves.
+      function fib(n) {
+        if(n === 0 || n === 1) {
+          return n;
+        } else
+        return fib(n - 1) + fib(n - 2);
+      }
+
+      fib(18);
+
+      var arr = [];
+
+      function countDown(n) {
+        if(n === 0) {
+          return arr;
+        } else {
+          arr.push(n);
+          countDown(n - 1);
+        }
+      }
+
+      countDown(20);
+      console.log(arr);
+
+
+      var sum = 0;
+
+      function sumOfRange(x) {
+        if (x === 0){
+          return sum;
+        } else {
+          sum = sum + x;
+          sumOfRange(x - 1);
+        }
+      }
+
+      sumOfRange(10);
+      console.log(sum);
+
+      
+
+
+
+
+    </script>
+  </body>
+</html>
