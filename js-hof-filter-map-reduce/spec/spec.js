@@ -17,7 +17,7 @@ describe('#compact', function() {
 
   it('does not alter the original array', function() {
     var input = [undefined, 1,2,3, null, 'foo', 'bar'];
-    expect(yourCode.compact(input)).toEqual([1,2,3, 'foo', 'bar'])
+    expect(yourCode.compact(input)).toEqual([1,2,3, 'foo', 'bar']);
     expect(input).toEqual([undefined, 1,2,3, null, 'foo', 'bar']);
   });
 });
@@ -108,7 +108,7 @@ describe('#reduce', function() {
   });
 
   it('works even if you are unable to just add all the array elements together', function() {
-    expect(yourCode.reduce([1, 'a','b','c'], function(sum, inc) { return sum.toString() + inc.toString() }, 2)).toBe('21abc');
+    expect(yourCode.reduce([1, 'a','b','c'], function(sum, inc) { return sum.toString() + inc.toString(); }, 2)).toBe('21abc');
   });
 });
 
