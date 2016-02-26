@@ -93,7 +93,7 @@ module.exports = {
       array.push(string.charCodeAt(i));
     }
     // filter the array to contain only even numbers
-    array = array.filter(isEven;
+    array = array.filter(isEven);
 
     // reduce that array into an accumulated sum
     result = array.reduce(function(a,b){
