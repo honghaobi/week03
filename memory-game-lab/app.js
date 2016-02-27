@@ -1,6 +1,6 @@
   var body = document.getElementsByTagName('body')[0];
-  var imgArray = ["red","red","orange","orange","yellow", "yellow", "green", "green", "blue", "blue", "purple", "purple", "brown", "brown", "pink", "pink"];
 
+  var imgArray = ["img/img1.png","img/img1.png","img/img2.png","img/img2.png","img/img3.png", "img/img3.png", "img/img4.png", "img/img4.png", "img/img5.png", "img/img5.png", "img/img6.png", "img/img6.png", "img/img7.png", "img/img7.png", "img/img8.png", "img/img8.png"];
 
   var randomArray = function (array) {
     array.sort( function() {
@@ -16,10 +16,10 @@
     var box;
 
     for (var i = 0; i < 16; i++) {
-      box = document.createElement('div');
+      box = document.createElement('img');
       box.id = "box" + i;
       box.className = 'box';
-      box.style.backgroundColor = imgArray[i];
+      box.setAttribute("src", imgArray[i]);
       box.style.opacity = 0;
       boxContainer.appendChild(box);
     }
@@ -39,27 +39,24 @@
     }
   };
 
-  var matchColor;
+  var matchImg;
   var matchBox;
-  var matched = [];
 
   var showBox = function() {
     body.addEventListener('click', function(event) {
-      if (!matchColor) {
+      if (!matchImg) {
         matchBox = event.target.id;
-        matchColor = event.target.style.backgroundColor;
+        matchImg = event.target.src;
         event.target.style.opacity = 1;
       } else if (matchBox === event.target.id){
         event.target.style.opacity = 0;
         matchBox = undefined;
-        matchColor = undefined;
-      } else if (matchColor === event.target.style.backgroundColor) {
+        matchImg = undefined;
+      } else if (matchImg === event.target.src) {
         event.target.style.opacity = 1;
-        matched.push(matchColor);
         matchBox = undefined;
-        matchColor = undefined;
-        console.log(matched);
-      } else if (matchColor !== event.target.style.backgroundColor){
+        matchImg = undefined;
+      } else if (matchImg !== event.target.src){
         event.target.style.opacity = 1;
         setTimeout(function(){
           document.getElementById(matchBox).style.opacity = 0;
@@ -67,7 +64,7 @@
         },300);
         setTimeout(function(){
           matchBox = undefined;
-          matchColor = undefined;
+          matchImg = undefined;
         },301);
       }
     });
