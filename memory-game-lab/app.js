@@ -41,30 +41,34 @@
 
   var matchColor;
   var matchBox;
-  var clickCount = 0;
+  var matched = [];
 
   var showBox = function() {
     body.addEventListener('click', function(event) {
       if (!matchColor) {
         matchBox = event.target.id;
         matchColor = event.target.style.backgroundColor;
-        clickCount += 1;
         event.target.style.opacity = 1;
+      } else if (matchBox === event.target.id){
+        event.target.style.opacity = 0;
+        matchBox = undefined;
+        matchColor = undefined;
       } else if (matchColor === event.target.style.backgroundColor) {
         event.target.style.opacity = 1;
+        matched.push(matchColor);
+        matchBox = undefined;
         matchColor = undefined;
-        clickCount += 1;
+        console.log(matched);
       } else if (matchColor !== event.target.style.backgroundColor){
         event.target.style.opacity = 1;
         setTimeout(function(){
           document.getElementById(matchBox).style.opacity = 0;
           event.target.style.opacity = 0;
-        },500);
+        },300);
         setTimeout(function(){
           matchBox = undefined;
           matchColor = undefined;
-          clickCount += 1;
-        },501);
+        },301);
       }
     });
   };
