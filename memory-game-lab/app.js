@@ -1,6 +1,13 @@
   var body = document.getElementsByTagName('body')[0];
   var imgArray = ["red","red","orange","orange","yellow", "yellow", "green", "green", "blue", "blue", "purple", "purple", "brown", "brown", "pink", "pink"];
 
+
+  var randomArray = function (array) {
+    array.sort( function() {
+      return 0.5 - Math.random();
+    });
+  };
+
   var createBoxes = function() {
     var boxContainer = document.createElement('section');
     boxContainer.className = 'boxContainer';
@@ -62,11 +69,7 @@
     });
   };
 
-
-
-
-
-
+  randomArray(imgArray);
   createBoxes();
   createOverlay();
   showBox();
