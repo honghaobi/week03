@@ -61,11 +61,11 @@
         setTimeout(function(){
           document.getElementById(matchBox).style.opacity = 0;
           event.target.style.opacity = 0;
-        },300);
+        },400);
         setTimeout(function(){
           matchBox = undefined;
           matchImg = undefined;
-        },301);
+        },401);
       }
     });
   };
