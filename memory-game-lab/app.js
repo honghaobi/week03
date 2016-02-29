@@ -38,19 +38,19 @@
   };
 
   var createTracker = function(){
-    gameTracker = document.createElement('div');
+    var gameTracker = document.createElement('div');
     gameTracker.className = 'gameTracker';
-    body.appendChild(gameTracker);
-
-    timer = document.createElement('div');
+    var timer = document.createElement('div');
     timer.className = 'timer';
-    count = document.createElement('div');
+    var count = document.createElement('div');
     count.className = 'count';
+
     gameTracker.appendChild(timer);
     gameTracker.appendChild(count);
+    body.appendChild(gameTracker);
 
-    gameWon = document.createElement('div');
-    gameLost = document.createElement('div');
+    var gameWon = document.createElement('div');
+    var gameLost = document.createElement('div');
     gameWon.innerHTML = "RAD!! YOU WON DUDE!!";
     gameWon.className = 'gameWon';
     gameLost.innerHTML = "NOO!! TIMES UP BRO!!";
@@ -61,12 +61,24 @@
     body.appendChild(gameLost);
   };
 
+  var totalSeconds = 30;
+
+  var tick = function() {
+    totalSeconds -= 1;
+    var timerCountdown = document.getElementsByClassName('timer')[0];
+    timerCountdown.innerHTML = totalSeconds;
+    window.setTimeout(tick, 1000);
+    if (totalSeconds === 0) {
+      gameLost();
+    }
+  };
+
+
+
   var matchImg;
   var matchBox;
   var clickCount = 0;
   var matchCount = 0;
-  var gameWon = document.getElementsByClassName('gameWon');
-  var gameLost = document.getElementsByClassName('gameLost');
 
   var showBox = function() {
     body.addEventListener('click', function(event) {
@@ -90,7 +102,6 @@
         matchCount += 1;
         clickCount += 1;
           if (matchCount === 8) {
-            console.log("you won");
             gameWon();
           }
       } else if (matchImg !== event.target.src) {
@@ -108,12 +119,20 @@
     });
   };
 
-  var gameWon = function (){
-    gameWon.style.opacity = 1;
+  var gameWon = function() {
+    var gameWonPrompt = document.getElementsByClassName('gameWon')[0];
+    gameWonPrompt.style.opacity = 1;
+    setTimeout(function() {
+      window.location.reload();
+    },3000);
   };
 
-  var gameLost = function (){
-
+  var gameLost = function() {
+    var gameLostPrompt = document.getElementsByClassName('gameLost')[0];
+    gameLostPrompt.style.opacity = 1;
+    setTimeout(function() {
+      window.location.reload();
+    },3000);
   };
 
 
@@ -121,4 +140,5 @@
   createBoxes();
   createOverlay();
   createTracker();
+  tick();
   showBox();
