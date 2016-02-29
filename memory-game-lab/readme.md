@@ -4,7 +4,7 @@ You're going to create a Javascript memory game on a subject of your choice(web 
 
 ##Surge URL!!!
 
-   available-comb.surge.sh
+   plain-stocking.surge.sh
 
 ###The requirements
 
