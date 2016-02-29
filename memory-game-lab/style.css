@@ -1,14 +1,4 @@
-html {
-  box-sizing: border-box;
-  background: url(img/bg.jpg) no-repeat center center fixed;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  opacity: .9;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+@import url(https://fonts.googleapis.com/css?family=Slackey);
 
 @keyframes roll {
   0% {
@@ -19,6 +9,27 @@ html {
   }
 }
 
+@keyframes rollLeft {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+html {
+  box-sizing: border-box;
+  background: url(img/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: .9;
+  font-family: 'Slackey', cursive;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 .boxContainer{
   width: 402px;
@@ -58,4 +69,43 @@ html {
   border: 3px solid red;
   float: left;
   z-index: 0;
+}
+
+.timer{
+  color: #43a5e3;
+  opacity: .8;
+  font-size: 400px;
+  top: 50%;
+  left: 50%;
+  margin-top: -260px;
+  margin-left: -230px;
+  z-index: -1;
+  position: absolute;
+  animation: rollLeft 10s infinite;
+}
+
+.count{
+  color: #f48705;
+  opacity: .9;
+  font-size: 200px;
+  top: 50;
+  left: 50;
+  z-index: -1;
+  position: absolute;
+}
+
+.gameWon{
+  color: #00f419;
+  font-size: 130px;
+  text-align: center;
+  z-index: -4;
+  position: absolute;
+}
+
+.gameLost{
+  color: #f40006;
+  font-size: 130px;
+  text-align: center;
+  z-index: -4;
+  position: absolute;
 }

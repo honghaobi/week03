@@ -61,19 +61,18 @@
     body.appendChild(gameLost);
   };
 
-  var totalSeconds = 30;
+  var totalSeconds = 31;
 
   var tick = function() {
     totalSeconds -= 1;
     var timerCountdown = document.getElementsByClassName('timer')[0];
     timerCountdown.innerHTML = totalSeconds;
     window.setTimeout(tick, 1000);
-    if (totalSeconds === 0) {
+    if (totalSeconds <= 0) {
       gameLost();
+      totalSeconds = 0;
     }
   };
-
-
 
   var matchImg;
   var matchBox;
@@ -82,39 +81,44 @@
 
   var showBox = function() {
     body.addEventListener('click', function(event) {
-      if (event.target.style.opacity == 1) {
-        event.target.style.opacity = 1;
-        clickCount += 1;
-      } else if (!matchImg) {
-        event.target.style.opacity = 1;
-        matchBox = event.target.id;
-        matchImg = event.target.src;
-        clickCount += 1;
-      } else if (matchBox === event.target.id) {
-        event.target.style.opacity = 0;
-        matchBox = undefined;
-        matchImg = undefined;
-        clickCount += 1;
-      } else if (matchImg === event.target.src) {
-        event.target.style.opacity = 1;
-        matchBox = undefined;
-        matchImg = undefined;
-        matchCount += 1;
-        clickCount += 1;
+      if (event.target.className === 'box') {
+        if (event.target.style.opacity == 1) {
+          event.target.style.opacity = 1;
+          clickCount += 1;
+        } else if (!matchImg) {
+          event.target.style.opacity = 1;
+          matchBox = event.target.id;
+          matchImg = event.target.src;
+          clickCount += 1;
+        } else if (matchBox === event.target.id) {
+          event.target.style.opacity = 0;
+          matchBox = undefined;
+          matchImg = undefined;
+          clickCount += 1;
+        } else if (matchImg === event.target.src) {
+          event.target.style.opacity = 1;
+          matchBox = undefined;
+          matchImg = undefined;
+          matchCount += 1;
+          clickCount += 1;
           if (matchCount === 8) {
             gameWon();
           }
-      } else if (matchImg !== event.target.src) {
-        event.target.style.opacity = 1;
-        clickCount += 1;
-        setTimeout(function() {
-          document.getElementById(matchBox).style.opacity = 0;
-          event.target.style.opacity = 0;
-        },400);
-        setTimeout(function(){
-          matchBox = undefined;
-          matchImg = undefined;
-        },401);
+        } else if (matchImg !== event.target.src) {
+          event.target.style.opacity = 1;
+          clickCount += 1;
+          setTimeout(function() {
+            document.getElementById(matchBox).style.opacity = 0;
+            event.target.style.opacity = 0;
+          },400);
+          setTimeout(function(){
+            matchBox = undefined;
+            matchImg = undefined;
+          },401);
+        }
+
+        var clickPrompt = document.getElementsByClassName('count')[0];
+        clickPrompt.innerHTML = clickCount;
       }
     });
   };
@@ -122,17 +126,19 @@
   var gameWon = function() {
     var gameWonPrompt = document.getElementsByClassName('gameWon')[0];
     gameWonPrompt.style.opacity = 1;
+    gameWonPrompt.style.zIndex = '4';
     setTimeout(function() {
       window.location.reload();
-    },3000);
+    },8000);
   };
 
   var gameLost = function() {
     var gameLostPrompt = document.getElementsByClassName('gameLost')[0];
     gameLostPrompt.style.opacity = 1;
+    gameLostPrompt.style.zIndex = '4';
     setTimeout(function() {
       window.location.reload();
-    },3000);
+    },8000);
   };
 
 
@@ -140,5 +146,5 @@
   createBoxes();
   createOverlay();
   createTracker();
-  tick();
   showBox();
+  tick();
