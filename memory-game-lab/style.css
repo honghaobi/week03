@@ -4,6 +4,7 @@ html {
   background-size: cover;
   width: 100%;
   height: 100%;
+  opacity: .9;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -28,7 +29,7 @@ html {
   margin-left: -200px;
   z-index: 1;
   position: absolute;
-  animation: roll 100s infinite;
+  animation: roll 80s infinite;
 }
 
 .box{
@@ -48,7 +49,7 @@ html {
   border: 3px solid red;
   z-index: 0;
   position: absolute;
-  animation: roll 100s infinite;
+  animation: roll 80s infinite;
 }
 
 .overLay{
