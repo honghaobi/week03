@@ -44,7 +44,11 @@
 
   var showBox = function() {
     body.addEventListener('click', function(event) {
-      if (!matchImg) {
+      if (event.target.style.opacity == 1) {
+        console.log("opa");
+        event.target.style.opacity = 1;
+        return;
+      } else if (!matchImg) {
         matchBox = event.target.id;
         matchImg = event.target.src;
         event.target.style.opacity = 1;
