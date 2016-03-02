@@ -68,7 +68,7 @@
     var timerCountdown = document.getElementsByClassName('timer')[0];
     timerCountdown.innerHTML = totalSeconds;
     window.setTimeout(tick, 1000);
-    if (totalSeconds <= 0) {
+    if (totalSeconds <= 1) {
       gameLost();
       totalSeconds = 0;
     }
@@ -110,11 +110,11 @@
           setTimeout(function() {
             document.getElementById(matchBox).style.opacity = 0;
             event.target.style.opacity = 0;
-          },400);
+          },800);
           setTimeout(function(){
             matchBox = undefined;
             matchImg = undefined;
-          },401);
+          },801);
         }
 
         var clickPrompt = document.getElementsByClassName('count')[0];
@@ -129,7 +129,7 @@
     gameWonPrompt.style.zIndex = '4';
     setTimeout(function() {
       window.location.reload();
-    },8000);
+    },5000);
   };
 
   var gameLost = function() {
@@ -138,7 +138,7 @@
     gameLostPrompt.style.zIndex = '4';
     setTimeout(function() {
       window.location.reload();
-    },8000);
+    },5000);
   };
 
 
